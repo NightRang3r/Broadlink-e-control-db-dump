@@ -50,5 +50,5 @@ with con:
         cur.execute("SELECT irCode FROM codeTable where buttonId=" + str(buttonIDS[i]))
         code = cur.fetchone()[0]
         result = "Button Name: " + buttonNames[i] + "| Button ID: " + str(buttonIDS[i]) + " | Code: " + str(code).encode('hex') + "\n"
-        codesFile.writelines(result)
+        codesFile.writelines(result.encode('utf-8'))
     codesFile.close()
