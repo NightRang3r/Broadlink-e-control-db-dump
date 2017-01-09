@@ -31,4 +31,6 @@ run: python getBroadlinkSharedData.py
 
 ### Requirements
 
-pip install simplejson
+simplejson
+
+`pip install simplejson`
