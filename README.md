@@ -12,7 +12,7 @@ the file is located in "/data/data/com.broadlink.rmt/databases/rmt.db" and put i
 
 # getBroadlinkSharedData.py
 
-This script will "parse" the broadlink e-Control Android application "SharedData" json files and dump the IR / RF codes for selected accessories into a text file which can be later used with broadlink-python to send the codes to the RM PRO hub
+This script will "parse" the broadlink e-Control Android application **"SharedData"** json files and dump the IR / RF codes for selected accessories into a text file which can be later used with broadlink-python to send the codes to the RM PRO hub
 NO ROOT ACCESS REQUIRED
 
 Just connect your Android device to your computer and browse the SD card / External Storage folder "/broadlink/newremote/SharedData/"
