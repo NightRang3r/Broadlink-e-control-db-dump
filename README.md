@@ -22,7 +22,9 @@ Just connect your Android device to your computer and browse the SD card / Exter
 You need to get the following files:
 
 jsonSubIr
+
 jsonButton
+
 jsonIrCode
 
 and put them in the same folder as this script.
