@@ -1,5 +1,7 @@
 # Description
 
+# econtrol-db-dump.py
+
 This script will "parse" the broadlink e-Control Android application database and dump the IR / RF codes for selected accessories into a text file which can be later used with broadlink-python to send the codes to the RM PRO hub.
 
 You need to get the "rmt.db" file from your (rooted) android device or emulator (ARM), 
