@@ -29,7 +29,7 @@ jsonIrCode
 
 and put them in the same folder as this script.
 
-run: python getBroadlinkSharedData.py
+run: `python getBroadlinkSharedData.py`
 
 ### Requirements
 
