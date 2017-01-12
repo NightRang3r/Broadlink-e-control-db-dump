@@ -38,3 +38,16 @@ run: `python getBroadlinkSharedData.py`
 simplejson
 
 `pip install simplejson`
+
+
+
+# sendCode.py
+
+This is a script you can use to test that your codes are working, It will send the command to the RM Pro
+You will need the python-broadlink library for the script to work.
+
+
+
+<pre>git clone https://github.com/mjg59/python-broadlink.git</pre>
+
+
