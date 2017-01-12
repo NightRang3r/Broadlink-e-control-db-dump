@@ -51,5 +51,5 @@ You will need the python-broadlink library for the script to work.
 
 <pre> sudo python setup.py install</pre>
 
-You will also need to edit the script `line 6` with your RM Pro IP Address and MAC Address and `line 17` with the code in hex format (Which can be produced by "econtrol-db-dump.py" and "getBroadlinkSharedData.py".
+You will also need to edit the script `line 6` with your RM Pro IP Address and MAC Address and `line 17` with the code in hex format (Which can be produced by "econtrol-db-dump.py" and "getBroadlinkSharedData.py").
 
