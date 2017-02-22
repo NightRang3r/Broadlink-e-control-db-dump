@@ -53,3 +53,19 @@ You will need the python-broadlink library for the script to work.
 
 You will also need to edit the script `line 6` with your RM Pro IP Address and MAC Address and `line 17` with the code in hex format (Which can be produced by "econtrol-db-dump.py" and "getBroadlinkSharedData.py").
 
+
+# FOR TC2 RF SWITCHES
+
+In case you get the following error: ""Input strings must be a multiple of 16 in length"" when sending the TC2 codes you dumped from the DB you will have to do the following:
+
+Try sending the code one time using the "sendCode.py" script:
+
+e.g:
+e90a4200df0909161609160909160916091609160916160909160916091609160916091609161609091609160916160916090916091609160916091616091609160909160916
+
+If it is not working and you get the "Input strings must be a multiple of 16 in length" error again, try to duplicate it twice:
+
+e.g:
+e90a4200df0909161609160909160916091609160916160909160916091609160916091609161609091609160916160916090916091609160916091616091609160909160916e90a4200df0909161609160909160916091609160916160909160916091609160916091609161609091609160916160916090916091609160916091616091609160909160916
+
+If not working keep going 3,4,5,6 time until it works with the script.
