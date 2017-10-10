@@ -18,7 +18,7 @@ run: python getBroadlinkSharedData.py
 '''
 
 import simplejson as json
-
+import base64
 
 buttonIDS = []
 buttonNames = []
@@ -61,5 +61,6 @@ for i in range(0, len(jsonIrCodeData)):
     for j in range(0, len(buttonIDS)):
         if jsonIrCodeData[i]['buttonId'] == buttonIDS[j]:
             code = ''.join('%02x' % (i & 0xff) for i in jsonIrCodeData[i]['code'])
-            result = "Button Name: " + buttonNames[j] + " | Button ID: " + str(jsonIrCodeData[i]['buttonId']) + " | Code: " + code
+            code_base64 = code.decode("hex").encode("base64")
+            result = "Button Name: " + buttonNames[j] + "\r\n" + "Button ID: " + str(jsonIrCodeData[i]['buttonId']) + "\r\n" + "Code: " + code + "\r\n" + "code_base64: " + "\r\n" + code_base64 + "\r\n"
             codesFile.writelines(result.encode('utf-8'))
