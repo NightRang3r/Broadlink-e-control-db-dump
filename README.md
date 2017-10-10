@@ -72,7 +72,7 @@ If not working keep going 3,4,5,6 time until it works with the script.
 
 # broadlink_to_home_assistant_encoder.py
 
-This script will output the codes in a format that will work with home assustant
+This script will output the codes in a format that will work with home assistant
 
 ~# broadlink_to_home_assistant_encoder.py "packet"
 
