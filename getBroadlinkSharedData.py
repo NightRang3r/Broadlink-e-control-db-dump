@@ -13,12 +13,23 @@ jsonIrCode
 
 and put them in the same folder as this script.
 
-run: python getBroadlinkSharedData.py
+run: python getBroadlinkSharedData.py 
+
+or duplicate code by number
+
+python getBroadlinkSharedData.py 5
 
 '''
 
 import simplejson as json
-import base64
+import base64, sys
+
+
+if len(sys.argv) > 1:
+    MultipleCode = sys.argv[1]
+else:
+    MultipleCode = "1"
+
 
 buttonIDS = []
 buttonNames = []
@@ -60,7 +71,7 @@ codesFile = open(accessory_name + '.txt', 'w')
 for i in range(0, len(jsonIrCodeData)):
     for j in range(0, len(buttonIDS)):
         if jsonIrCodeData[i]['buttonId'] == buttonIDS[j]:
-            code = ''.join('%02x' % (i & 0xff) for i in jsonIrCodeData[i]['code'])
+            code = ''.join('%02x' % (i & 0xff) for i in jsonIrCodeData[i]['code']) * int(MultipleCode)
             code_base64 = code.decode("hex").encode("base64")
-            result = "Button Name: " + buttonNames[j] + "\r\n" + "Button ID: " + str(jsonIrCodeData[i]['buttonId']) + "\r\n" + "Code: " + code + "\r\n" + "code_base64: " + "\r\n" + code_base64 + "\r\n"
+            result = "Button Name: " + buttonNames[j] + "\r\n" + "Button ID: " + str(jsonIrCodeData[i]['buttonId']) + "\r\n" + "Code: " + code  + "\r\n" + "Base64: " + "\r\n" + code_base64 + "\r\n"
             codesFile.writelines(result.encode('utf-8'))
