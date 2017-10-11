@@ -10,7 +10,7 @@ You need to get the "rmt.db" file from your android device or emulator (ARM),
 
 the file is located in "/data/data/com.broadlink.rmt/databases/rmt.db" and put it in the same folder as this script.
 
-<pre> adb pull /data/data/com.broadlink.rmt/databases/rmt.db </pre>
+<pre> ~# adb pull /data/data/com.broadlink.rmt/databases/rmt.db </pre>
 
 # getBroadlinkSharedData.py
 
@@ -31,11 +31,11 @@ and put them in the same folder as this script.
 
 ##### *** If you can't find the following files on your phone storage You may need to open the e-control app and on the left side menu choose "Share" and then "Share to other phones in WLAN" it should generate the files. ***
 
-run: `python getBroadlinkSharedData.py`
+run: `~# python getBroadlinkSharedData.py`
 
 or duplicate code by number
 
-`python getBroadlinkSharedData.py 5`
+`~# python getBroadlinkSharedData.py 5`
 
 ### Requirements
 
@@ -51,9 +51,9 @@ This is a script you can use to test that your codes are working, It will send t
 You will need the python-broadlink library for the script to work.
 
 
-<pre>git clone https://github.com/mjg59/python-broadlink.git</pre>
+<pre>~# git clone https://github.com/mjg59/python-broadlink.git</pre>
 
-<pre> sudo python setup.py install</pre>
+<pre>~# sudo python setup.py install</pre>
 
 You will also need to edit the script `line 6` with your RM Pro IP Address and MAC Address and `line 17` with the code in hex format (Which can be produced by "econtrol-db-dump.py" and "getBroadlinkSharedData.py").
 
@@ -78,6 +78,6 @@ If not working keep going 3,4,5,6 time until it works with the script.
 
 This script will output the codes in a format that will work with home assistant
 
-~# broadlink_to_home_assistant_encoder.py "packet"
+`~# broadlink_to_home_assistant_encoder.py "packet"`
 
-~# broadlink_to_home_assistant_encoder.py e90a4200df0909161609160909160916091609160916160909160916091609160916091609161609091609160916160916090916091609160916091616091609160909160916e90a4200df0909161609160909160916091609160916160909160916091609160916091609161609091609160916160916090916091609160916091616091609160909160916
+`~# broadlink_to_home_assistant_encoder.py e90a4200df0909161609160909160916091609160916160909160916091609160916091609161609091609160916160916090916091609160916091616091609160909160916e90a4200df0909161609160909160916091609160916160909160916091609160916091609161609091609160916160916090916091609160916091616091609160909160916`
