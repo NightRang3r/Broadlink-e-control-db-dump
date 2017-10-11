@@ -31,11 +31,11 @@ and put them in the same folder as this script.
 
 ##### *** If you can't find the following files on your phone storage You may need to open the e-control app and on the left side menu choose "Share" and then "Share to other phones in WLAN" it should generate the files. ***
 
-run: python getBroadlinkSharedData.py 
+run: `python getBroadlinkSharedData.py`
 
 or duplicate code by number
 
-python getBroadlinkSharedData.py 5
+`python getBroadlinkSharedData.py 5`
 
 ### Requirements
 
