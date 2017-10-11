@@ -41,7 +41,7 @@ or duplicate code by number
 
 simplejson
 
-`pip install simplejson`
+`~# pip install simplejson`
 
 
 
