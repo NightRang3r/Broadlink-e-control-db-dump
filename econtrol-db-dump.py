@@ -1,4 +1,5 @@
 import sqlite3 as lite
+from binascii import hexlify
 
 # This script will "parse" the broadlink e-Control Android application database and dump the IR / RF codes for selected accessories into a text file which can be later used with broadlink-python to send the codes to the RM PRO hub
 # You need to get the "rmt.db" file from your (rooted) android device or emulator (ARM), the file is located in "/data/data/com.broadlink.rmt/databases/rmt.db" and put it in the same folder as this script.
@@ -48,7 +49,14 @@ with con:
 
     for i in range(0, len(buttonIDS)):
         cur.execute("SELECT irCode FROM codeTable where buttonId=" + str(buttonIDS[i]))
-        code = cur.fetchone()[0]
-        result = "Button Name: " + buttonNames[i] + "| Button ID: " + str(buttonIDS[i]) + " | Code: " + str(code).encode('hex') + "\n"
+        #print str((cur.fetchall()[0])[0]).encode('hex')
+        #fix for code None error by obaby
+        code = cur.fetchone()
+        if code:
+            cod = code[0]
+        else:
+            continue
+        hexlify(cod)
+        result = "Button Name: " + buttonNames[i] + "| Button ID: " + str(buttonIDS[i]) + " | Code: " + str(cod).encode('hex') + "\n"
         codesFile.writelines(result.encode('utf-8'))
     codesFile.close()
