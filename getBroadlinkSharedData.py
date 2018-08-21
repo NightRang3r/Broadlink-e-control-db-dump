@@ -56,6 +56,15 @@ else:
     load_json = json.loads
 
 
+IS_PY2 = sys.version_info[0] == 2
+
+def hex2bin(x):
+    if IS_PY2:
+        return x.decode('hex')
+    else:
+        return bytes.fromhex(x)
+
+
 if len(sys.argv) > 1:
     MultipleCode = sys.argv[1]
 else:
@@ -70,16 +79,18 @@ jsonSubIr = open("jsonSubIr").read()
 jsonSubIrData = load_json(jsonSubIr)
 
 
+
 for i in range(0, len(jsonSubIrData)):
-    print "ID:", jsonSubIrData[i]['id'], "| Name:", jsonSubIrData[i]['name']
+    print("ID:", jsonSubIrData[i]['id'], "| Name:", jsonSubIrData[i]['name'])
 
 
 choice = input("Select accessory ID: ")
+choice = int(choice)
 
 for i in range(0, len(jsonSubIrData)):
     if jsonSubIrData[i]['id'] == choice:
         accessory_name = jsonSubIrData[i]['name']
-        print "[+] You selected: ", accessory_name
+        print("[+] You selected: ", accessory_name)
 
 
 jsonButton = open("jsonButton").read()
@@ -96,13 +107,15 @@ jsonIrCode = open("jsonIrCode").read()
 jsonIrCodeData = load_json(jsonIrCode)
 
 
-print "[+] Dumping codes to " + accessory_name + ".txt"
+print("[+] Dumping codes to " + accessory_name + ".txt")
 codesFile = open(accessory_name + '.txt', 'w')
 
 for i in range(0, len(jsonIrCodeData)):
     for j in range(0, len(buttonIDS)):
         if jsonIrCodeData[i]['buttonId'] == buttonIDS[j]:
             code = ''.join('%02x' % (i & 0xff) for i in jsonIrCodeData[i]['code']) * int(MultipleCode)
-            code_base64 = code.decode("hex").encode("base64")
+            code_bytes = hex2bin(code)
+            code_base64 = base64.b64encode(code_bytes)
+            code_base64 = code_base64.decode('utf-8')
             result = "Button Name: " + buttonNames[j] + "\r\n" + "Button ID: " + str(jsonIrCodeData[i]['buttonId']) + "\r\n" + "Code: " + code  + "\r\n" + "Base64: " + "\r\n" + code_base64 + "\r\n"
-            codesFile.writelines(result.encode('utf-8'))
+            codesFile.write(result)
