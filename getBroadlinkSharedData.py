@@ -21,8 +21,39 @@ python getBroadlinkSharedData.py 5
 
 '''
 
-import simplejson as json
 import base64, sys
+
+try:
+    # Python 2.6+
+    import json
+except ImportError:
+    try:
+        # from http://code.google.com/p/simplejson
+        import simplejson as json
+    except ImportError:
+        json = None
+
+if json is None:
+
+    def dump_json(x, indent=None):
+        """dumb not safe!
+        Works for the purposes of this specific script as quotes never
+        appear in data set.
+
+        Parameter indent ignored"""
+        if indent:
+            result = pprint.pformat(x, indent)
+        else:
+            result = repr(x).replace("'", '"')
+        return result
+
+    def load_json(x):
+        """dumb not safe! Works for the purposes of this specific script"""
+        x = x.replace('\r', '')
+        return eval(x)
+else:
+    dump_json = json.dumps
+    load_json = json.loads
 
 
 if len(sys.argv) > 1:
@@ -36,7 +67,7 @@ buttonNames = []
 
 
 jsonSubIr = open("jsonSubIr").read()
-jsonSubIrData = json.loads(jsonSubIr)
+jsonSubIrData = load_json(jsonSubIr)
 
 
 for i in range(0, len(jsonSubIrData)):
@@ -52,7 +83,7 @@ for i in range(0, len(jsonSubIrData)):
 
 
 jsonButton = open("jsonButton").read()
-jsonButtonData = json.loads(jsonButton)
+jsonButtonData = load_json(jsonButton)
 
 
 for i in range(0, len(jsonButtonData)):
@@ -62,7 +93,7 @@ for i in range(0, len(jsonButtonData)):
 
 
 jsonIrCode = open("jsonIrCode").read()
-jsonIrCodeData = json.loads(jsonIrCode)
+jsonIrCodeData = load_json(jsonIrCode)
 
 
 print "[+] Dumping codes to " + accessory_name + ".txt"
