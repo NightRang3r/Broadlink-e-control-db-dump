@@ -118,4 +118,4 @@ for i in range(0, len(jsonIrCodeData)):
             code_base64 = base64.b64encode(code_bytes)
             code_base64 = code_base64.decode('utf-8')
             result = "Button Name: " + buttonNames[j] + "\r\n" + "Button ID: " + str(jsonIrCodeData[i]['buttonId']) + "\r\n" + "Code: " + code  + "\r\n" + "Base64: " + "\r\n" + code_base64 + "\r\n"
-            codesFile.write(result)
+            codesFile.write(result.encode('utf-8'))
