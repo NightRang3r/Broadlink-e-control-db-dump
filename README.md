@@ -1,6 +1,10 @@
 # Description
 
-# * All Scripts are written using python 2.7 
+https://github.com/clach04/Broadlink-e-control-db-dump
+
+Python 3.x and 2.7 scripts for processing data for BroadLink InfraRed / IR devices like the BroadLink New RM Mini3 IR Control Hub ,Smart Home Wi-Fi Enabled Infrared Universal Remote Control, One for All Control
+
+Friendly fork of https://github.com/NightRang3r/Broadlink-e-control-db-dump - pending merges of PRs
 
 # econtrol-db-dump.py
 
