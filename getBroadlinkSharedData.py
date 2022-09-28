@@ -108,7 +108,7 @@ jsonIrCodeData = load_json(jsonIrCode)
 
 
 print("[+] Dumping codes to " + accessory_name + ".txt")
-codesFile = open(accessory_name + '.txt', 'w')
+codesFile = open(accessory_name + '.txt', 'wb')
 
 for i in range(0, len(jsonIrCodeData)):
     for j in range(0, len(buttonIDS)):
